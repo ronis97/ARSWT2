@@ -62,9 +62,9 @@ La documentacion del aplicativo se puede ver directamente en el archivo `index.h
 
 ### Diagrama de clases
 
-El diagrama completo se puede encontrar en el archivo `Taller1ARSW.asta` 
+El diagrama completo se puede encontrar en el archivo `Taller2ARSW.asta` 
 
-![]()
+![](https://github.com/ronis97/ARSWT2/blob/master/img/DiagramaClases.png)
 
 
 
