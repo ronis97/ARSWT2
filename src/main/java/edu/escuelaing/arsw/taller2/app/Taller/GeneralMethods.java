@@ -1,5 +1,6 @@
 package edu.escuelaing.arsw.taller2.app.Taller;
 
+import javax.xml.crypto.Data;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class GeneralMethods {
             total += dato;
         }
         total /= data.size();
-        return total;
+        return Math.round(total*100.0)/100.0;
     }
 
     public static double getStandardDeviation(List<Double> data){
@@ -20,8 +21,9 @@ public class GeneralMethods {
         for (Double dato:data){
             standardDeviation += Math.pow((dato-mean),2);
         }
-        squareRoot = standardDeviation / data.size();
+        squareRoot = standardDeviation / (data.size() -1) ;
         total = Math.sqrt(squareRoot);
-        return total;
+        return Math.round(total*100.0)/100.0;
     }
+
 }

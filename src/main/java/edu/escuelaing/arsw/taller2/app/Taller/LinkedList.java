@@ -3,94 +3,149 @@ package edu.escuelaing.arsw.taller2.app.Taller;
 import java.io.Serializable;
 import java.util.*;
 
-public class LinkedList extends AbstractSequentialList implements List, Deque, Cloneable, Serializable {
+public class LinkedList<GenericDataType> implements List<GenericDataType>, Deque<GenericDataType>, Cloneable, Serializable {
+
+    private LinkedNode<GenericDataType> head;
+    private LinkedNode<GenericDataType> end;
+    private int size;
+
+    /**
+     * Constructor basico de una linked list, cabeza y cola inicializadas en nulo
+     */
+    public LinkedList() {
+        this.head = null;
+        this.end = null;
+        this.size = 0;
+    }
+
+    public LinkedNode<GenericDataType> getHead() {
+        return head;
+    }
+
+    public void setHead(LinkedNode<GenericDataType> head) {
+        this.head = head;
+    }
+
+    public LinkedNode<GenericDataType> getEnd() {
+        return end;
+    }
+
+    public void setEnd(LinkedNode<GenericDataType> end) {
+        this.end = end;
+    }
+
+
+    /**
+     * Tamano de una lista enlazada
+     * @return cantidad de elementos en la lista
+     */
     @Override
     public int size() {
-        return 0;
+        return this.size;
     }
 
+    /**
+     * Agrega un elemento a la lista enlazada
+     * @param genericDataType El dato que se agrega a la lista
+     * @return Si NO fue posible agregar el elemento
+     */
+    @Override
+    public boolean add(GenericDataType genericDataType) {
+        if (isEmpty()){
+            head = new LinkedNode<GenericDataType>(genericDataType);
+            end = head;
+            head.setNext(end);
+        }
+        else{
+            LinkedNode<GenericDataType> newNode = new LinkedNode<GenericDataType>(genericDataType);
+            end.setNext(newNode);
+            end = newNode;
+        }
+        size ++;
+        return false;
+    }
+
+    /**
+     * Retorna el iterador de la lista enlazada
+     * @return El iterador
+     */
+    @Override
+    public Iterator<GenericDataType> iterator() {
+        return new Iterator<GenericDataType>() {
+            LinkedNode<GenericDataType> first = head;
+
+            public boolean hasNext() {
+                return first != null;
+            }
+
+            public GenericDataType next() {
+                if (hasNext()) {
+                    GenericDataType node = first.getNode();
+                    first = first.getNext();
+                    return node;
+                }
+                return null;
+            }
+
+        };
+    }
+
+    /**
+     * Retorna si la lista se encuentra vacia o no
+     * @return True o false
+     */
     @Override
     public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public boolean offerFirst(GenericDataType genericDataType) {
         return false;
     }
 
     @Override
-    public boolean contains(Object o) {
+    public boolean offerLast(GenericDataType genericDataType) {
         return false;
     }
 
     @Override
-    public Iterator iterator() {
+    public GenericDataType removeFirst() {
         return null;
     }
 
     @Override
-    public Iterator descendingIterator() {
+    public GenericDataType removeLast() {
         return null;
     }
 
     @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public void addFirst(Object o) {
-
-    }
-
-    @Override
-    public void addLast(Object o) {
-
-    }
-
-    @Override
-    public boolean offerFirst(Object o) {
-        return false;
-    }
-
-    @Override
-    public boolean offerLast(Object o) {
-        return false;
-    }
-
-    @Override
-    public Object removeFirst() {
+    public GenericDataType pollFirst() {
         return null;
     }
 
     @Override
-    public Object removeLast() {
+    public GenericDataType pollLast() {
         return null;
     }
 
     @Override
-    public Object pollFirst() {
+    public GenericDataType getFirst() {
         return null;
     }
 
     @Override
-    public Object pollLast() {
+    public GenericDataType getLast() {
         return null;
     }
 
     @Override
-    public Object getFirst() {
+    public GenericDataType peekFirst() {
         return null;
     }
 
     @Override
-    public Object getLast() {
-        return null;
-    }
-
-    @Override
-    public Object peekFirst() {
-        return null;
-    }
-
-    @Override
-    public Object peekLast() {
+    public GenericDataType peekLast() {
         return null;
     }
 
@@ -105,34 +160,63 @@ public class LinkedList extends AbstractSequentialList implements List, Deque, C
     }
 
     @Override
-    public boolean add(Object o) {
+    public boolean offer(GenericDataType genericDataType) {
         return false;
     }
 
     @Override
-    public boolean offer(Object o) {
+    public GenericDataType remove() {
+        return null;
+    }
+
+    @Override
+    public GenericDataType poll() {
+        return null;
+    }
+
+    @Override
+    public GenericDataType element() {
+        return null;
+    }
+
+    @Override
+    public GenericDataType peek() {
+        return null;
+    }
+
+    @Override
+    public void push(GenericDataType genericDataType) {
+
+    }
+
+    @Override
+    public GenericDataType pop() {
+        return null;
+    }
+
+    @Override
+    public boolean contains(Object o) {
         return false;
     }
 
+
+
     @Override
-    public Object remove() {
+    public Iterator descendingIterator() {
         return null;
     }
 
     @Override
-    public Object poll() {
-        return null;
+    public Object[] toArray() {
+        return new Object[0];
     }
 
     @Override
-    public Object element() {
+    public <T> T[] toArray(T[] a) {
         return null;
     }
 
-    @Override
-    public Object peek() {
-        return null;
-    }
+
 
     @Override
     public boolean remove(Object o) {
@@ -140,22 +224,27 @@ public class LinkedList extends AbstractSequentialList implements List, Deque, C
     }
 
     @Override
-    public boolean addAll(Collection c) {
+    public boolean containsAll(Collection<?> c) {
         return false;
     }
 
     @Override
-    public void push(Object o) {
-
+    public boolean addAll(Collection<? extends GenericDataType> c) {
+        return false;
     }
 
     @Override
-    public Object pop() {
-        return null;
+    public boolean addAll(int index, Collection<? extends GenericDataType> c) {
+        return false;
     }
 
     @Override
-    public boolean addAll(int index, Collection c) {
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
         return false;
     }
 
@@ -165,22 +254,22 @@ public class LinkedList extends AbstractSequentialList implements List, Deque, C
     }
 
     @Override
-    public Object get(int index) {
+    public GenericDataType get(int index) {
         return null;
     }
 
     @Override
-    public Object set(int index, Object element) {
+    public GenericDataType set(int index, GenericDataType element) {
         return null;
     }
 
     @Override
-    public void add(int index, Object element) {
+    public void add(int index, GenericDataType element) {
 
     }
 
     @Override
-    public Object remove(int index) {
+    public GenericDataType remove(int index) {
         return null;
     }
 
@@ -195,37 +284,30 @@ public class LinkedList extends AbstractSequentialList implements List, Deque, C
     }
 
     @Override
-    public ListIterator listIterator() {
+    public ListIterator<GenericDataType> listIterator() {
         return null;
     }
 
     @Override
-    public ListIterator listIterator(int index) {
+    public ListIterator<GenericDataType> listIterator(int index) {
         return null;
     }
 
     @Override
-    public List subList(int fromIndex, int toIndex) {
+    public List<GenericDataType> subList(int fromIndex, int toIndex) {
         return null;
     }
 
     @Override
-    public boolean retainAll(Collection c) {
-        return false;
+    public void addFirst(Object o) {
+
     }
 
     @Override
-    public boolean removeAll(Collection c) {
-        return false;
+    public void addLast(Object o) {
+
     }
 
-    @Override
-    public boolean containsAll(Collection c) {
-        return false;
-    }
 
-    @Override
-    public Object[] toArray(Object[] a) {
-        return new Object[0];
-    }
+
 }
