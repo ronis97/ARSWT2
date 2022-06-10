@@ -1,13 +1,13 @@
-# Primer taller de ARSW
+# Segundo taller de ARSW
 
-Un aplicativo simple que calcula el numero de lineas en un archivo de texto
+Un aplicativo simple que calcula el promedio y la desviacion estandar de un conjunto de valores dado en un archivo de texto
 
 ## Preparacion
 
 Clonamos el repositorio con la siguiente instrucción en consola:
 
 ```
-git clone https://github.com/ronis97/ARSW-T1.git
+https://github.com/ronis97/ARSWT2.git
 ```
 
 
@@ -32,13 +32,13 @@ con esto maven se encargara de descargar todos los recursos necesarios para la e
 Para ejecutar el programa simplemente corremos la instrucción:
 
 ```
-mvn exec:java -Dexec.mainClass="edu.escuelaing.arsw.app.FirstVersion" -Dexec.args="phy src/main/resources/English.java"
+mvn exec:java -Dexec.mainClass="edu.escuelaing.arsw.app.taller2.app.Taller.LoadFile" -Dexec.args="src/main/resources/columna2.txt"
 ```
 
-En consola veremos la cantidad de lineas totales del programa, si queremos ver especificamente las lineas de codigo colocamos:
+En consola veremos en primera linea el promedio y la segunda linea la desviacion estandar, podemos hacer lo mismo para la otra columna de datos solicitada:
 
 ```
-mvn exec:java -Dexec.mainClass="edu.escuelaing.arsw.app.FirstVersion" -Dexec.args="loc src/main/resources/English.java"
+mvn exec:java -Dexec.mainClass="edu.escuelaing.arsw.app.taller2.app.Taller.LoadFile" -Dexec.args="src/main/resources/columna1.txt"
 ```
 
 

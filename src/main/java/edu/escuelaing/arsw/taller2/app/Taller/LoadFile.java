@@ -35,7 +35,6 @@ public class LoadFile {
                 number = Double.valueOf(line);
                 data.add(number);
             }
-
         }
         catch (Exception e){
             System.out.println(e.getMessage());
